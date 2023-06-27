@@ -3,10 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { RainbowKitCustomConnectButton } from "./scaffold-eth";
 
 // import from "./"
 
-const Nav = () => {
+export const Header = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
   return (
     <div className="flex-between w-full mb-16 pt-3">
@@ -56,8 +57,11 @@ const Nav = () => {
           )}
         </div>
       </div>
+      <div className="navbar-end flex-grow mr-4">
+        <RainbowKitCustomConnectButton />
+      </div>
     </div>
   );
 };
 
-export default Nav;
+// export default Header;
