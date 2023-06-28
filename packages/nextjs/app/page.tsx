@@ -1,18 +1,12 @@
 import Link from "next/link";
 import type { NextPage } from "next";
-// import { MetaHeader } from "~~/components/MetaHeader";
-import { Metadata } from "next";
 import { BugAntIcon, MagnifyingGlassIcon, SparklesIcon } from "@heroicons/react/24/outline";
-
-export const metadata: Metadata = {
-  title: "Scaffold-ETH 2 App",
-  description: "Built with 🏗 Scaffold-ETH 2",
-};
+import { MetaHeader } from "~~/components/MetaHeader";
 
 const Home: NextPage = () => {
   return (
     <>
-      {/* <MetaHeader /> */}
+      <MetaHeader />
       <div className="flex items-center flex-col flex-grow pt-10">
         <div className="px-5">
           <h1 className="text-center mb-8">
@@ -35,8 +29,8 @@ const Home: NextPage = () => {
               <BugAntIcon className="h-8 w-8 fill-secondary" />
               <p>
                 Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contract
+                <Link href="/catch" passHref className="link">
+                  Catch
                 </Link>{" "}
                 tab.
               </p>
@@ -45,8 +39,8 @@ const Home: NextPage = () => {
               <SparklesIcon className="h-8 w-8 fill-secondary" />
               <p>
                 Experiment with{" "}
-                <Link href="/example-ui" passHref className="link">
-                  Example UI
+                <Link href="/pokedex" passHref className="link">
+                  Pokedex
                 </Link>{" "}
                 to build your own UI.
               </p>
@@ -55,8 +49,18 @@ const Home: NextPage = () => {
               <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
               <p>
                 Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
+                <Link href="/pokemart" passHref className="link">
+                  Pokemart
+                </Link>{" "}
+                tab.
+              </p>
+            </div>
+            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
+              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
+              <p>
+                Explore your local transactions with the{" "}
+                <Link href="/trading" passHref className="link">
+                  Trading
                 </Link>{" "}
                 tab.
               </p>

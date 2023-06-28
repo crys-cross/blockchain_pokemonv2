@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect } from "react";
 import { useDarkMode, useIsMounted } from "usehooks-ts";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
