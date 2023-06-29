@@ -35,21 +35,23 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   }, [isDarkMode]);
 
   return (
-    <WagmiConfig client={wagmiClient}>
-      <NextNProgress />
-      <RainbowKitProvider
-        chains={appChains.chains}
-        avatar={BlockieAvatar}
-        theme={isDarkTheme ? darkTheme() : lightTheme()}
-      >
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="relative flex flex-col flex-1">{children}</main>
-          <Footer />
-        </div>
-        <Toaster />
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <html lang="en">
+      <WagmiConfig client={wagmiClient}>
+        <NextNProgress />
+        <RainbowKitProvider
+          chains={appChains.chains}
+          avatar={BlockieAvatar}
+          theme={isDarkTheme ? darkTheme() : lightTheme()}
+        >
+          <body className="flex flex-col min-h-screen">
+            <Header />
+            <main className="relative flex flex-col flex-1">{children}</main>
+            <Footer />
+          </body>
+          <Toaster />
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </html>
   );
 };
 
