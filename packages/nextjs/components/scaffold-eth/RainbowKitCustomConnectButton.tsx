@@ -1,3 +1,5 @@
+"use client";
+
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useDisconnect, useSwitchNetwork } from "wagmi";
 import { ArrowLeftOnRectangleIcon, ArrowsRightLeftIcon, ChevronDownIcon } from "@heroicons/react/24/solid";

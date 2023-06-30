@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// import type { AppProps } from "next/app";
+//import type { AppProps } from "next/app";
 import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import NextNProgress from "nextjs-progressbar";
@@ -23,17 +23,14 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   // This variable is required for initial client side rendering of correct theme for RainbowKit
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const { isDarkMode } = useDarkMode();
-
   useEffect(() => {
     if (price > 0) {
       setNativeCurrencyPrice(price);
     }
   }, [setNativeCurrencyPrice, price]);
-
   useEffect(() => {
     setIsDarkTheme(isDarkMode);
   }, [isDarkMode]);
-
   return (
     <html lang="en">
       <WagmiConfig client={wagmiClient}>
@@ -54,5 +51,41 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
     </html>
   );
 };
-
 export default ScaffoldEthApp;
+// import { useEffect, useState } from "react";
+// import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
+// import { useDarkMode } from "usehooks-ts";
+// import { WagmiConfig } from "wagmi";
+// import { Footer } from "~~/components/Footer";
+// import { Header } from "~~/components/Header";
+// import { BlockieAvatar } from "~~/components/scaffold-eth";
+// import { wagmiClient } from "~~/services/web3/wagmiClient";
+// import { appChains } from "~~/services/web3/wagmiConnectors";
+// import "~~/styles/globals.css";
+
+// export default function RootLayout({ children }: { children: React.ReactNode }) {
+//   const [isDarkTheme, setIsDarkTheme] = useState(true);
+//   const { isDarkMode } = useDarkMode();
+
+//   useEffect(() => {
+//     setIsDarkTheme(isDarkMode);
+//   }, [isDarkMode]);
+
+//   return (
+//     <html lang="en">
+//       <body className="relative">
+//         <WagmiConfig client={wagmiClient}>
+//           <RainbowKitProvider
+//             chains={appChains.chains}
+//             avatar={BlockieAvatar}
+//             theme={isDarkTheme ? darkTheme() : lightTheme()}
+//           >
+//             <Header />
+//             {children}
+//             <Footer />
+//           </RainbowKitProvider>
+//         </WagmiConfig>
+//       </body>
+//     </html>
+//   );
+// }

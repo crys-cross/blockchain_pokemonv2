@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { ethers } from "ethers";
 import { localhost } from "wagmi/chains";
 import { getLocalProvider } from "~~/utils/scaffold-eth";
