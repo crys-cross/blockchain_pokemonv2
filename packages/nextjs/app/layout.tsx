@@ -38,23 +38,26 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
 
   // if (!isMounted) return null;
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <html lang="en">
-      <WagmiConfig client={wagmiClient}>
-        <NextNProgress />
-        <RainbowKitProvider
-          chains={appChains.chains}
-          avatar={BlockieAvatar}
-          theme={isDarkTheme ? darkTheme() : lightTheme()}
-        >
-          <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen">
+        <WagmiConfig client={wagmiClient}>
+          <NextNProgress />
+          <RainbowKitProvider
+            chains={appChains.chains}
+            avatar={BlockieAvatar}
+            theme={isDarkTheme ? darkTheme() : lightTheme()}
+          >
             <Header />
-            <main className="relative flex flex-col flex-1">{children}</main>
+            <main className="relative flex flex-col flex-1">{mounted && children}</main>
             <Footer />
-          </body>
-          <Toaster />
-        </RainbowKitProvider>
-      </WagmiConfig>
+            <Toaster />
+          </RainbowKitProvider>
+        </WagmiConfig>
+      </body>
     </html>
   );
 };
