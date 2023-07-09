@@ -7,11 +7,23 @@ import Image from "next/image";
 // import CarDetails from "./CarDetails";
 import { IPokeProps } from "~~/types";
 
-interface CarCardProps {
-  car: IPokeProps;
+interface PkmnCardProps {
+  pkmn: IPokeProps;
 }
 
-const PkmnCard = () => {
+const PkmnCard = ({ pkmn }: PkmnCardProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // const {} = pkmn;
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
   return <div>PkmnCard</div>;
 };
 
