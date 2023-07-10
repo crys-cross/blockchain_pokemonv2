@@ -28,3 +28,10 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
 };
 
 export default PkmnCard;
+
+// TODO
+// https://www.pokemon.com/us/pokedex
+// image
+// pokemon number
+// pokemon name
+// type1    type2
