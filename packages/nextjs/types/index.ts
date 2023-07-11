@@ -29,3 +29,13 @@ export interface IFilterProps {
   limit?: number;
   fuel?: string;
 }
+
+export interface CustomButtonProps {
+  isDisabled?: boolean;
+  btnType?: "button" | "submit";
+  containerStyles?: string;
+  textStyles?: string;
+  title: string;
+  rightIcon?: string;
+  handleClick?: MouseEventHandler<HTMLButtonElement>;
+}
