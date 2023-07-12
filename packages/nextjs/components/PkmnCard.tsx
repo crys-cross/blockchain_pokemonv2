@@ -15,7 +15,7 @@ interface PkmnCardProps {
 const PkmnCard = ({ pkmn }: PkmnCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // const {idNumber, name, type1, type2  } = pkmn;
+  const { id, name, types } = pkmn;
 
   const closeModal = () => {
     setIsOpen(false);
@@ -51,7 +51,7 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
       <div className="car-card__image">
         <Image
           // TODO: change src below
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idNumber}.png`}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
           alt="car model"
           fill
           priority
@@ -60,7 +60,7 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
       </div>
       <p className="car-card__price">
         <span className="car-card__price-dollar">#</span>
-        {idNumber}
+        {id}
         <span className="car-card__price-day">/day</span>
       </p>
       <p className="car-card__price">{name}</p>
@@ -68,7 +68,7 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
       <div className="relative flex w-full mt-2">
         <div className="car-card__icon-container">
           <div className="car-card__icon">
-            <p className={`car-card__icon-text ${type1}`}>{type1}</p>
+            <p className={`car-card__icon-text ${type1}`}>{types[0]}</p>
           </div>
           <div className="car-card__icon">
             <p className={`car-card__icon-text ${type1}`}>{type2}</p>
