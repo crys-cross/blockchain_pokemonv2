@@ -6,10 +6,10 @@ export interface IPokemontypes {
 }
 
 export interface IPokeProps {
-  id: number;
-  name: string;
-  types: IPokemontypes[];
-  results: string[];
+  id?: number;
+  name?: string;
+  types?: IPokemontypes[];
+  results?: string[];
 }
 // export interface IPokeProps {
 //   city_mpg: number;
@@ -29,12 +29,12 @@ export interface IPokeProps {
 export type PokeState = IPokeProps[] & { message?: string };
 
 export interface SearchBarProps {
-  setPokemonName: (name: string) => void;
-  setPokemonNumber: (number: string) => void;
+  setPokemonSearch: (search: string) => void;
+  // setPokemonNumber: (number: string) => void;
 }
 
 export interface IFilterProps {
-  pkmnSearch?: string | number;
+  pkmnSearch?: string;
 }
 
 export interface CustomButtonProps {
@@ -51,4 +51,9 @@ export interface ShowMoreProps {
   pageNumber: number;
   isNext: boolean;
   setLimit: (limit: number) => void;
+}
+
+export interface SearchManuFacturerProps {
+  selected: string;
+  setSelected: (selected: string) => void;
 }

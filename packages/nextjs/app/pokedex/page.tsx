@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 // import {  } from "@constants";
 import { CustomFilter, Hero, PkmnCard, SearchBar, ShowMore } from "~~/components";
-import { IFilterProps, PokeState } from "~~/types";
+import { PokeState } from "~~/types";
 import { fetchPKMN } from "~~/utils";
 
 const page = () => {
@@ -12,14 +12,14 @@ const page = () => {
   const [loading, setLoading] = useState(false);
 
   // search states
-  const [pkmnSearch, setPkmnSearch] = useState<IFilterProps>();
+  const [pkmnSearch, setPkmnSearch] = useState("");
   //   const [pkmnSearch, setPkmnSearch] = useState("");
 
   const getPkmn = async () => {
     setLoading(true);
     try {
       const result = await fetchPKMN({
-        pkmnSearch: pkmnSearch!.toString().toLowerCase() || "",
+        pkmnSearch: pkmnSearch!.toLowerCase() || "",
       });
 
       setAllPkmn(result);
@@ -45,7 +45,7 @@ const page = () => {
         </div>
 
         <div className="home__filters">
-          <SearchBar setPokemonName={setPkmnSearch} setPokemonNumber={setModel} />
+          <SearchBar setPokemonSearch={setPkmnSearch} />
 
           {/* <div className="home__filter-container">
             <CustomFilter options={fuels} setFilter={setFuel} />
@@ -68,7 +68,7 @@ const page = () => {
               </div>
             )}
 
-            <ShowMore pageNumber={limit / 10} isNext={limit > allPkmn.length} setLimit={setLimit} />
+            {/* <ShowMore pageNumber={limit / 10} isNext={limit > allPkmn.length} setLimit={setLimit} /> */}
             {/* pagination component here */}
           </section>
         ) : (

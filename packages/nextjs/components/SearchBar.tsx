@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import SearchPokemons from "./SearchPokemons";
 import { SearchBarProps } from "~~/types";
 
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
@@ -10,29 +11,24 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
   </button>
 );
 
-const SearchBar = ({ setPokemonName, setPokemonNumber }: SearchBarProps) => {
-  const [searchModel, setSearchModel] = useState("");
-  const [searchManufacturer, setSearchManufacturer] = useState("");
+const SearchBar = ({ setPokemonSearch }: SearchBarProps) => {
+  const [searchPokemon, setSearchPokemon] = useState("");
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (searchManufacturer.trim() === "" && searchModel.trim() === "") return alert("Please provide some input");
+    if (searchPokemon.trim() === "") return alert("Please provide some input");
 
-    setPokemonName(searchModel);
-    setPokemonNumber(searchManufacturer);
+    setPokemonSearch(searchPokemon);
   };
 
   return (
     <form className="searchbar" onSubmit={handleSearch}>
       <div className="searchbar__item">
-        {/* <SearchManufacturer
-          selected={searchManufacturer}
-          setSelected={setSearchManufacturer}
-        /> */}
+        <SearchPokemons selected={searchPokemon} setSelected={setSearchPokemon} />
         <SearchButton otherClasses="sm:hidden" />
       </div>
-      <div className="searchbar__item">
+      {/* <div className="searchbar__item">
         <Image
           src="/model-icon.png"
           width={25}
@@ -43,13 +39,13 @@ const SearchBar = ({ setPokemonName, setPokemonNumber }: SearchBarProps) => {
         <input
           type="text"
           name="model"
-          value={searchModel}
+          value={searchPokemon}
           onChange={e => setSearchModel(e.target.value)}
           placeholder="Tiguan..."
           className="searchbar__input"
         />
         <SearchButton otherClasses="sm:hidden" />
-      </div>
+      </div> */}
       <SearchButton otherClasses="max-sm:hidden" />
     </form>
   );
