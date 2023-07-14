@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 // import {  } from "@constants";
-import { CustomFilter, Hero, PkmnCard, SearchBar, ShowMore } from "~~/components";
+import { CustomFilter, Hero, Pagination, PkmnCard, SearchBar, ShowMore } from "~~/components";
 import { PokeState } from "~~/types";
 import { fetchPKMN } from "~~/utils";
 
@@ -13,7 +13,11 @@ const page = () => {
 
   // search states
   const [pkmnSearch, setPkmnSearch] = useState("");
-  //   const [pkmnSearch, setPkmnSearch] = useState("");
+  // page button states
+  const [currentPageUrl, setCurrentPageUrl] = useState("");
+  const [nextPageUrl, setNextPageUrl] = useState("");
+  const [prevPageUrl, setPrevPageUrl] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
 
   const getPkmn = async () => {
     setLoading(true);
@@ -23,6 +27,16 @@ const page = () => {
       });
 
       setAllPkmn(result);
+
+      if (pkmnSearch === "") {
+        setCurrentPageUrl(pkmnSearch);
+        setNextPageUrl(result.data.next);
+        setPrevPageUrl(result.data.previous);
+      } else {
+        setCurrentPageUrl("");
+        setNextPageUrl("");
+        setPrevPageUrl("");
+      }
     } catch {
       console.error();
     } finally {
@@ -70,6 +84,12 @@ const page = () => {
 
             {/* <ShowMore pageNumber={limit / 10} isNext={limit > allPkmn.length} setLimit={setLimit} /> */}
             {/* pagination component here */}
+            <Pagination
+              isNext={currentPageUrl === ""}
+              pageNumber={pageNumber}
+              setNext={setNextPageUrl}
+              setPrev={setPrevPageUrl}
+            />
           </section>
         ) : (
           !loading && (

@@ -53,6 +53,12 @@ export interface ShowMoreProps {
   setLimit: (limit: number) => void;
 }
 
+export interface PaginationProps {
+  isNext: boolean;
+  pageNumber: number;
+  setAllPkmn: (limit: PokeState) => void;
+}
+
 export interface SearchManuFacturerProps {
   selected: string;
   setSelected: (selected: string) => void;
