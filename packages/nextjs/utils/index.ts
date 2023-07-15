@@ -1,18 +1,20 @@
 import { IFilterProps, IPokeProps } from "~~/types";
 
-export const fetchPKMN = async (pkmnSearch: IFilterProps) => {
-  // const { manufacturer, year, model, limit, fuel } = filters;
+export async function fetchPKMN(filters: IFilterProps) {
+  const { pkmnSearch, pageNumber } = filters;
+
+  // set checks to set next/prev button
+  let page;
+  if (pkmnSearch === "") {
+    page = `?offset=${pageNumber}&limit=20`;
+  } else {
+    page = "";
+  }
 
   // Set the required headers for the API request
-  // const headers: HeadersInit = {
-  //   "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY || "",
-  //   "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
-  // };
-
-  // Set the required headers for the API request
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pkmnSearch}`);
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pkmnSearch}${page}`);
 
   // Parse the response as JSON
   const result = await response.json();
   return result;
-};
+}

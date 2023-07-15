@@ -35,6 +35,7 @@ export interface SearchBarProps {
 
 export interface IFilterProps {
   pkmnSearch?: string;
+  pageNumber?: number;
 }
 
 export interface CustomButtonProps {
@@ -56,7 +57,7 @@ export interface ShowMoreProps {
 export interface PaginationProps {
   isNext: boolean;
   pageNumber: number;
-  setAllPkmn: (limit: PokeState) => void;
+  setPageNumber: (page: number) => void;
 }
 
 export interface SearchManuFacturerProps {

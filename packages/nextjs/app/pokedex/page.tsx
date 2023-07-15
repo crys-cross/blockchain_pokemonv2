@@ -14,9 +14,6 @@ const page = () => {
   // search states
   const [pkmnSearch, setPkmnSearch] = useState("");
   // page button states
-  const [currentPageUrl, setCurrentPageUrl] = useState("");
-  const [nextPageUrl, setNextPageUrl] = useState("");
-  const [prevPageUrl, setPrevPageUrl] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
   const getPkmn = async () => {
@@ -24,19 +21,10 @@ const page = () => {
     try {
       const result = await fetchPKMN({
         pkmnSearch: pkmnSearch!.toLowerCase() || "",
+        pageNumber: pageNumber || 0,
       });
 
       setAllPkmn(result);
-
-      if (pkmnSearch === "") {
-        setCurrentPageUrl(pkmnSearch);
-        setNextPageUrl(result.data.next);
-        setPrevPageUrl(result.data.previous);
-      } else {
-        setCurrentPageUrl("");
-        setNextPageUrl("");
-        setPrevPageUrl("");
-      }
     } catch {
       console.error();
     } finally {
@@ -46,7 +34,7 @@ const page = () => {
 
   useEffect(() => {
     getPkmn();
-  }, [pkmnSearch]);
+  }, [pkmnSearch, pageNumber]);
 
   return (
     <main className="overflow-hidden">
@@ -84,12 +72,7 @@ const page = () => {
 
             {/* <ShowMore pageNumber={limit / 10} isNext={limit > allPkmn.length} setLimit={setLimit} /> */}
             {/* pagination component here */}
-            <Pagination
-              isNext={currentPageUrl === ""}
-              pageNumber={pageNumber}
-              setNext={setNextPageUrl}
-              setPrev={setPrevPageUrl}
-            />
+            <Pagination isNext={pkmnSearch === ""} pageNumber={pageNumber} setPageNumber={setPageNumber} />
           </section>
         ) : (
           !loading && (
