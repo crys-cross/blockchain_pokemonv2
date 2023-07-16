@@ -18,7 +18,7 @@ import { wagmiClient } from "~~/services/web3/wagmiClient";
 import { appChains } from "~~/services/web3/wagmiConnectors";
 import "~~/styles/globals.css";
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: "PokeDApp",
   description: "Pokemon concept on a blockchain",
 };
