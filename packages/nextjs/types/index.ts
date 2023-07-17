@@ -26,6 +26,11 @@ export interface IPokeProps {
 //   year: number;
 // }
 
+export interface results {
+  name: string;
+  url: string;
+}
+
 export type PokeState = IPokeProps[] & { message?: string };
 
 export interface SearchBarProps {
