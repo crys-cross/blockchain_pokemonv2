@@ -5,12 +5,28 @@ import Image from "next/image";
 // import {  } from "@constants";
 import { CustomFilter, Hero, Pagination, PkmnCard, SearchBar, ShowMore } from "~~/components";
 import { PokeState } from "~~/types";
+import { IPokeProps } from "~~/types";
 import { fetchPKMN } from "~~/utils";
+import { fetchPKMNCards } from "~~/utils";
 
 const page = () => {
-  const [pkmn, setPkmn] = useState<PokeState>([]);
+  const [pkmn, setPkmn] = useState([]);
 
-  return <PkmnCard pkmn={pkmn} />;
+  // const getPkmnCards = async () => {
+  //   const data = await fetch("https://pokeapi.co/api/v2/pokemon");
+  //   const result = await data.json();
+  //   setPkmn(result);
+  // };
+
+  useEffect(() => {
+    // getPkmnCards();
+  }, []);
+
+  return (
+    <main>
+      <div>{pkmn}</div>
+    </main>
+  );
 };
 
 // const page = () => {

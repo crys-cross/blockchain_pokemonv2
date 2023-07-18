@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+// import * as React from "react";
 import { useEffect, useState } from "react";
 import {
   RainbowKitProvider,
@@ -27,8 +27,8 @@ import { wagmiClient } from "~~/services/web3/wagmiClient";
 import { appChains } from "~~/services/web3/wagmiConnectors";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const price = useNativeCurrencyPrice();
   const setNativeCurrencyPrice = useGlobalState(state => state.setNativeCurrencyPrice);
@@ -56,7 +56,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
         avatar={BlockieAvatar}
         theme={isDarkTheme ? darkTheme() : lightTheme()}
       >
+        <NextNProgress />
         {mounted && children}
+        <Toaster />
       </RainbowKitProvider>
     </WagmiConfig>
   );
