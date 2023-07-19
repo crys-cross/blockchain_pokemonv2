@@ -50,13 +50,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <WagmiConfig client={wagmiClient}>
+      <NextNProgress />
       <RainbowKitProvider
         chains={appChains.chains}
         // appInfo={demoAppInfo}
         avatar={BlockieAvatar}
         theme={isDarkTheme ? darkTheme() : lightTheme()}
       >
-        <NextNProgress />
         {mounted && children}
         <Toaster />
       </RainbowKitProvider>
