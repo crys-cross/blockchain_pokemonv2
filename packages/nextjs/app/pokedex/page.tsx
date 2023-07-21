@@ -9,17 +9,26 @@ import { IPokeProps } from "~~/types";
 import { fetchPKMN } from "~~/utils";
 import { fetchPKMNCards } from "~~/utils";
 
-const page = () => {
-  const [pkmn, setPkmn] = useState([]);
+export interface FetchProps {
+  count?: number;
+  next?: string;
+  previous?: string;
+  results?: string[];
+}
 
-  // const getPkmnCards = async () => {
-  //   const data = await fetch("https://pokeapi.co/api/v2/pokemon");
-  //   const result = await data.json();
-  //   setPkmn(result);
-  // };
+export type PState = FetchProps[] & { message?: string };
+
+const page = () => {
+  const [pkmn, setPkmn] = useState<PState>([]);
+
+  const getPkmnCards = async () => {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+    const result = await response.json();
+    setPkmn(result.results.map(p => p.name));
+  };
 
   useEffect(() => {
-    // getPkmnCards();
+    getPkmnCards();
   }, []);
 
   return (
