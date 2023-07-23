@@ -27,14 +27,33 @@ const page = () => {
   // page button states
   const [pageNumber, setPageNumber] = useState(0);
 
+  // // experimental search
+  // const getPkmnCards = async () => {
+  //   const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+  //   const result = await response.json();
+  //   setPkmn(result.results);
+  // };
+
   const getPkmnCards = async () => {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon");
-    const result = await response.json();
-    setPkmn(result.results);
+    setLoading(true);
+    try {
+      const result = await fetchPKMN({
+        pkmnSearch: pkmnSearch.toLowerCase() || "",
+      });
+
+      setPkmn(result);
+    } catch {
+      console.error();
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const { results } = pkmn.parse();
 
   useEffect(() => {
     getPkmnCards();
+    // obj();
   }, []);
 
   return (
@@ -55,7 +74,14 @@ const page = () => {
           </div> */}
         </div>
 
-        {pkmn ? (
+        <div className="home__cars-wrapper">
+          {results.map((pkmn, index) => (
+            <p key={`#${index}`}>Pokemon Name: {pkmn.name}</p>
+            // <PkmnCard key={`car-${index}`} car={car} />
+          ))}
+        </div>
+
+        {pkmn.length > 0 ? (
           <section>
             <div className="home__cars-wrapper">
               {pkmn.map((pkmn, index) => (

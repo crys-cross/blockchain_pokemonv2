@@ -40,7 +40,7 @@ export interface SearchBarProps {
 
 export interface IFilterProps {
   pkmnSearch?: string;
-  pageNumber?: number;
+  // pageNumber?: number;
 }
 
 export interface CustomButtonProps {
