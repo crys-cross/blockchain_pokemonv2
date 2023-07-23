@@ -49,8 +49,6 @@ const page = () => {
     }
   };
 
-  const { results } = pkmn.parse();
-
   useEffect(() => {
     getPkmnCards();
     // obj();
