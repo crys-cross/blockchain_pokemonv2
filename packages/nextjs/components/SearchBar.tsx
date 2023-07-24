@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import SearchPokemons from "./SearchPokemons";
 import { SearchBarProps } from "~~/types";
 
@@ -11,15 +12,34 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
   </button>
 );
 
-const SearchBar = ({ setPokemonSearch }: SearchBarProps) => {
+const SearchBar = () => {
   const [searchPokemon, setSearchPokemon] = useState("");
+
+  const router = useRouter();
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (searchPokemon.trim() === "") return alert("Please provide some input");
 
-    setPokemonSearch(searchPokemon);
+    updateSearchParams(searchPokemon.toLowerCase());
+  };
+
+  const updateSearchParams = (searchPokemon: string) => {
+    // Create a new URLSearchParams object using the current URL search parameters
+    const searchParams = new URLSearchParams(window.location.search);
+
+    // Update or delete the 'searchPokemon' search parameter based on the 'searchPokemon' value
+    if (searchPokemon) {
+      searchParams.set("searchPokemon", searchPokemon);
+    } else {
+      searchParams.delete("searchPokemon");
+    }
+
+    // Generate the new pathname with the updated search parameters
+    const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+
+    router.push(newPathname);
   };
 
   return (

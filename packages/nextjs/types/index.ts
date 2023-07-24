@@ -43,6 +43,10 @@ export interface IFilterProps {
   // pageNumber?: number;
 }
 
+export interface HomeProps {
+  searchParams: IFilterProps;
+}
+
 export interface CustomButtonProps {
   isDisabled?: boolean;
   btnType?: "button" | "submit";

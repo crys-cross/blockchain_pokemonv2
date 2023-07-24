@@ -4,115 +4,72 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 // import {  } from "@constants";
 import { CustomFilter, Hero, Pagination, PkmnCard, SearchBar, ShowMore } from "~~/components";
-import { PokeState } from "~~/types";
+import { HomeProps, PokeState } from "~~/types";
 import { IPokeProps } from "~~/types";
 import { fetchPKMN } from "~~/utils";
 import { fetchPKMNCards } from "~~/utils";
 
-export interface FetchProps {
-  count?: number;
-  next?: string;
-  previous?: string;
-  results?: string[];
-}
+const Page = async ({ searchParams }: HomeProps) => {
+  const allPKMN = await fetchPKMN({
+    pkmnSearch: searchParams.pkmnSearch || "",
+  });
 
-export type PState = FetchProps[] & { message?: string };
-
-const page = () => {
-  const [pkmn, setPkmn] = useState<PState>([]);
-  const [loading, setLoading] = useState(false);
-
-  // search states
-  const [pkmnSearch, setPkmnSearch] = useState("");
-  // page button states
-  const [pageNumber, setPageNumber] = useState(0);
-
-  // // experimental search
-  // const getPkmnCards = async () => {
-  //   const response = await fetch("https://pokeapi.co/api/v2/pokemon");
-  //   const result = await response.json();
-  //   setPkmn(result.results);
-  // };
-
-  const getPkmnCards = async () => {
-    setLoading(true);
-    try {
-      const result = await fetchPKMN({
-        pkmnSearch: pkmnSearch.toLowerCase() || "",
-      });
-
-      setPkmn(result);
-    } catch {
-      console.error();
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getPkmnCards();
-    // obj();
-  }, []);
+  const isDataEmpty = !Array.isArray(allPKMN) || allPKMN.length < 1 || !allPKMN;
 
   return (
     <main className="overflow-hidden">
-      {/* pokedex banner here */}
+      <Hero />
 
       <div className="mt-12 padding-x padding-y max-width" id="discover">
         <div className="home__text-container">
-          <h1 className="text-4xl font-extrabold">Pokedex</h1>
-          <p>Search Pokemon Here</p>
+          <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
+          <p>Explore out cars you might like</p>
         </div>
 
         <div className="home__filters">
-          <SearchBar setPokemonSearch={setPkmnSearch} />
+          <SearchBar />
+
           {/* <div className="home__filter-container">
-            <CustomFilter options={fuels} setFilter={setFuel} />
-            <CustomFilter options={yearsOfProduction} setFilter={setYear} />
+            <CustomFilter title="fuel" options={fuels} />
+            <CustomFilter title="year" options={yearsOfProduction} />
           </div> */}
         </div>
 
-        <div className="home__cars-wrapper">
-          {results.map((pkmn, index) => (
-            <p key={`#${index}`}>Pokemon Name: {pkmn.name}</p>
-            // <PkmnCard key={`car-${index}`} car={car} />
-          ))}
-        </div>
-
-        {pkmn.length > 0 ? (
+        {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
-              {pkmn.map((pkmn, index) => (
-                <PkmnCard key={`#${index}`} pkmn={pkmn} />
-                // <PkmnCard key={`car-${index}`} car={car} />
+              {allPKMN?.map(car => (
+                <PkmnCard car={car} />
               ))}
             </div>
 
-            {loading && (
-              <div className="mt-16 w-full flex-center">
-                <Image src="./loader.svg" alt="loader" width={50} height={50} className="object-contain" />
-              </div>
-            )}
-
-            {/* <ShowMore pageNumber={limit / 10} isNext={limit > allPkmn.length} setLimit={setLimit} /> */}
-            {/* pagination component here */}
-            <Pagination isNext={pkmnSearch === ""} pageNumber={pageNumber} setPageNumber={setPageNumber} />
+            <ShowMore
+              pageNumber={(searchParams.limit || 10) / 10}
+              isNext={(searchParams.limit || 10) > allPKMN.length}
+            />
           </section>
         ) : (
-          !loading && (
-            <div className="home__error-container">
-              <h2 className="text-black text-xl font-bold">Oops, no results</h2>
-              {/* <p>{pkmn?.message}</p> */}
-            </div>
-          )
+          <div className="home__error-container">
+            <h2 className="text-black text-xl font-bold">Oops, no results</h2>
+            <p>{allPKMN?.message}</p>
+          </div>
         )}
       </div>
     </main>
   );
 };
 
-// const page = () => {
-//   const [allPkmn, setAllPkmn] = useState<PokeState>([]);
+// export interface FetchProps {
+//   count?: number;
+//   next?: string;
+//   previous?: string;
+//   results?: string[];
+// }
+
+// export type PState = FetchProps[] & { message?: string };
+
+//  const page = () => {
+//   const [pkmn, setPkmn] = useState([]);
 //   const [loading, setLoading] = useState(false);
 
 //   // search states
@@ -120,15 +77,21 @@ const page = () => {
 //   // page button states
 //   const [pageNumber, setPageNumber] = useState(0);
 
-//   const getPkmn = async () => {
+//   // // experimental search
+//   // const getPkmnCards = async () => {
+//   //   const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+//   //   const result = await response.json();
+//   //   setPkmn(result.results);
+//   // };
+
+//   const getPkmnCards = async () => {
 //     setLoading(true);
 //     try {
 //       const result = await fetchPKMN({
-//         pkmnSearch: pkmnSearch!.toLowerCase() || "",
-//         pageNumber: pageNumber || 0,
+//         pkmnSearch: pkmnSearch.toLowerCase() || "",
 //       });
 
-//       setAllPkmn(result);
+//       setPkmn(result);
 //     } catch {
 //       console.error();
 //     } finally {
@@ -137,9 +100,9 @@ const page = () => {
 //   };
 
 //   useEffect(() => {
-//     getPkmn();
-//   }, [pkmnSearch, pageNumber]);
-//   console.log(allPkmn);
+//     getPkmnCards();
+//     // obj();
+//   }, []);
 
 //   return (
 //     <main className="overflow-hidden">
@@ -159,10 +122,17 @@ const page = () => {
 //           </div> */}
 //         </div>
 
-//         {allPkmn ? (
+//         <div className="home__cars-wrapper">
+//           {results.map((pkmn, index) => (
+//             <p key={`#${index}`}>Pokemon Name: {pkmn.name}</p>
+//             // <PkmnCard key={`car-${index}`} car={car} />
+//           ))}
+//         </div>
+
+//         {pkmn.length > 0 ? (
 //           <section>
 //             <div className="home__cars-wrapper">
-//               {allPkmn.map((pkmn, index) => (
+//               {pkmn.map((pkmn, index) => (
 //                 <PkmnCard key={`#${index}`} pkmn={pkmn} />
 //                 // <PkmnCard key={`car-${index}`} car={car} />
 //               ))}
@@ -182,7 +152,7 @@ const page = () => {
 //           !loading && (
 //             <div className="home__error-container">
 //               <h2 className="text-black text-xl font-bold">Oops, no results</h2>
-//               <p>{allPkmn?.message}</p>
+//               {/* <p>{pkmn?.message}</p> */}
 //             </div>
 //           )
 //         )}
@@ -191,4 +161,4 @@ const page = () => {
 //   );
 // };
 
-export default page;
+export default Page;

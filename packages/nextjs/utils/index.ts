@@ -16,7 +16,7 @@ export async function fetchPKMN(filters: IFilterProps) {
 
   // Parse the response as JSON
   const result = await response.json();
-  return result;
+  return result as FetchProps;
 
   // // custom Parse the response as JSON
   // const result = await response.json();
@@ -49,4 +49,17 @@ export async function fetchPKMNCards() {
   const result = await response.json();
   const cards = result.data.results;
   return cards;
+}
+
+export interface FetchProps {
+  count?: number;
+  next?: string;
+  previous?: string;
+  results?: string[];
+  name?: string;
+  id?: string;
+  types?: string[];
+  height?: number;
+  weight?: number;
+  stats?: string[];
 }
