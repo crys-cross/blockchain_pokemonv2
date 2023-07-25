@@ -55,11 +55,21 @@ export interface FetchProps {
   count?: number;
   next?: string;
   previous?: string;
-  results?: string[];
+  results?: Options[];
   name?: string;
   id?: string;
-  types?: string[];
+  types?: Types[];
   height?: number;
   weight?: number;
   stats?: string[];
+}
+
+export interface Options {
+  name?: string;
+  url?: string;
+}
+
+export interface Types {
+  slot?: string;
+  type?: Options;
 }

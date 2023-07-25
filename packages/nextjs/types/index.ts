@@ -6,10 +6,26 @@ export interface IPokemontypes {
 }
 
 export interface IPokeProps {
-  id?: number;
+  count?: number;
+  next?: string;
+  previous?: string;
+  results?: Options[];
   name?: string;
-  types?: IPokemontypes[];
-  results?: string[];
+  id?: string;
+  types?: Types[];
+  height?: number;
+  weight?: number;
+  stats?: string[];
+}
+
+export interface Options {
+  name?: string;
+  url?: string;
+}
+
+export interface Types {
+  slot?: string;
+  type?: Options;
 }
 // export interface IPokeProps {
 //   city_mpg: number;

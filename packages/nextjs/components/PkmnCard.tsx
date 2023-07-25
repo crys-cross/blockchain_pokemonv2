@@ -13,84 +13,56 @@ interface PkmnCardProps {
 }
 
 const PkmnCard = ({ pkmn }: PkmnCardProps) => {
-  // const [isOpen, setIsOpen] = useState(false);
-
   // const { id, name, types, results } = pkmn;
+  const { id, name, types } = pkmn;
+  const [isOpen, setIsOpen] = useState(false);
 
-  // const closeModal = () => {
-  //   setIsOpen(false);
-  // };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
-  // const openModal = () => {
-  //   setIsOpen(true);
-  // };
+  const openModal = () => {
+    setIsOpen(true);
+  };
 
   return (
     <div className="car-card group">
-      <div className="car-card__content">
-        <h2 className="car-card__content-title">{name}</h2>
-
+      <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src={!isLiked ? "/heart-outline.svg" : "/heart-filled.svg"}
-          width={24}
-          height={24}
-          alt="heart"
-          className="object-contain cursor-pointer mt-0.5"
-          onClick={() => setIsLiked(!isLiked)}
-        />
-      </div>
-
-      <p className="car-card__price">
-        <span className="car-card__price-dollar">$</span>
-        {carRent}
-        <span className="car-card__price-day">/day</span>
-      </p>
-
-      <div className="car-card__image">
-        <Image
-          // TODO: change src below
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-          // `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
-          // `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shimy/${id}.png`
           alt="car model"
           fill
           priority
           className="object-contain"
+          onClick={() => setIsOpen(true)}
         />
       </div>
-      <p className="car-card__price">
-        <span className="car-card__price-dollar">#</span>
-        {id}
-        <span className="car-card__price-day">/day</span>
-      </p>
-      <p className="car-card__price">{name}</p>
 
       <div className="relative flex w-full mt-2">
-        <div className="car-card__icon-container">
-          <div className="car-card__icon">
-            <p className={`car-card__icon-text ${type1}`}>{types[0]}</p>
+        <div className="flex group-hover:invisible w-full justify-between text-grey">
+          <div className="flex flex-col justify-right items-center gap-2">
+            {/* <p className="text-[14px] leading-[17px]">#{id}</p> */}
           </div>
-          <div className="car-card__icon">
-            <p className={`car-card__icon-text ${type1}`}>{type2}</p>
+          <div className="flex flex-col justify-right items-center gap-2">
+            <p className="car-card__icon-text">{name}</p>
           </div>
-          <div className="car-card__icon">
-            <Image src="/gas.svg" width={20} height={20} alt="seat" />
-            <p className="car-card__icon-text">{city_mpg} MPG</p>
+          <div className="flex flex-col justify-right items-center gap-2">
+            {/* <p className="car-card__icon-text">{types![1].type?.name}</p> */}
           </div>
         </div>
 
-        <div className="car-card__btn-container">
+        {/* <div className="car-card__btn-container">
           <CustomButton
             title="View More"
             containerStyles="w-full py-[16px] rounded-full bg-primary-blue"
             textStyles="text-white text-[14px] leading-[17px] font-bold"
             rightIcon="/right-arrow.svg"
-            handleClick={openModal}
+            handleClick={() => setIsOpen(true)}
           />
-        </div>
+        </div> */}
       </div>
 
-      <PkmnDetails isOpen={isOpen} closeModal={closeModal} pkmn={pkmn} />
+      <PkmnDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} pkmn={pkmn} />
     </div>
   );
 };
@@ -103,3 +75,73 @@ export default PkmnCard;
 // pokemon number
 // pokemon name
 // type1    type2
+
+// return (
+//   <div className="car-card group">
+//     <div className="car-card__content">
+//       <h2 className="car-card__content-title">
+//         {name}
+//         {results.name}
+//       </h2>
+
+//       {/* <Image
+//         src={!isLiked ? "/heart-outline.svg" : "/heart-filled.svg"}
+//         width={24}
+//         height={24}
+//         alt="heart"
+//         className="object-contain cursor-pointer mt-0.5"
+//         onClick={() => setIsLiked(!isLiked)}
+//       /> */}
+//     </div>
+
+//     {/* <p className="car-card__price">
+//       <span className="car-card__price-dollar">$</span>
+//       {carRent}
+//       <span className="car-card__price-day">/day</span>
+//     </p> */}
+
+//     <div className="car-card__image">
+//       <Image
+//         // TODO: change src below
+//         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+//         // `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+//         // `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shimy/${id}.png`
+//         alt="car model"
+//         fill
+//         priority
+//         className="object-contain"
+//       />
+//     </div>
+
+//     <p className="car-card__price">
+//       <span className="car-card__price-dollar">#</span>
+//       {id}
+//       <span className="car-card__price-day">/day</span>
+//     </p>
+
+//     <p className="car-card__price">{name}</p>
+
+//     <div className="relative flex w-full mt-2">
+//       <div className="car-card__icon-container">
+//         <div className="car-card__icon">{/* <p className={`car-card__icon-text ${type1}`}>{types[0]}</p> */}</div>
+//         <div className="car-card__icon">{/* <p className={`car-card__icon-text ${type1}`}>{type2}</p> */}</div>
+//         <div className="car-card__icon">
+//           <Image src="/gas.svg" width={20} height={20} alt="seat" />
+//           {/* <p className="car-card__icon-text">{city_mpg} MPG</p> */}
+//         </div>
+//       </div>
+
+//       <div className="car-card__btn-container">
+//         <CustomButton
+//           title="View More"
+//           containerStyles="w-full py-[16px] rounded-full bg-primary-blue"
+//           textStyles="text-white text-[14px] leading-[17px] font-bold"
+//           rightIcon="/right-arrow.svg"
+//           handleClick={openModal}
+//         />
+//       </div>
+//     </div>
+
+//     <PkmnDetails isOpen={isOpen} closeModal={closeModal} pkmn={pkmn} />
+//   </div>
+// );

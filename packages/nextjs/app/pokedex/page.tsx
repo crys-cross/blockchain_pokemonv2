@@ -1,3 +1,6 @@
+// TODO:
+// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
+// 2. fix pkmncards id and image
 "use client";
 
 import { useEffect, useState } from "react";
@@ -9,21 +12,42 @@ import { IPokeProps } from "~~/types";
 import { fetchPKMN } from "~~/utils";
 import { fetchPKMNCards } from "~~/utils";
 
+// TODO:
+// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
+// 2. fix pkmncards id and image
+
+// TODO:
+// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
+
+// TODO:
+// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
+
+// TODO:
+// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
+
+// TODO:
+// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
+
+// TODO:
+// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
+
+// TODO:
+// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
+
 const Page = async ({ searchParams }: HomeProps) => {
   const allPKMN = await fetchPKMN({
     pkmnSearch: searchParams.pkmnSearch || "",
   });
 
-  const isDataEmpty = !Array.isArray(allPKMN) || allPKMN.length < 1 || !allPKMN;
+  const isSearchEmpty = !Array.isArray(allPKMN.results) || allPKMN.results.length < 1 || !allPKMN.results;
+  const isSearchFilled = !Array.isArray(allPKMN.types) || allPKMN.types.length < 1 || !allPKMN.types;
 
   return (
     <main className="overflow-hidden">
-      <Hero />
-
       <div className="mt-12 padding-x padding-y max-width" id="discover">
         <div className="home__text-container">
-          <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
-          <p>Explore out cars you might like</p>
+          <h1 className="text-4xl font-extrabold">Pokedex</h1>
+          <p>Search Pokemon here</p>
         </div>
 
         <div className="home__filters">
@@ -35,23 +59,29 @@ const Page = async ({ searchParams }: HomeProps) => {
           </div> */}
         </div>
 
-        {!isDataEmpty ? (
+        {!isSearchEmpty ? (
           <section>
             <div className="home__cars-wrapper">
-              {allPKMN?.map(car => (
-                <PkmnCard car={car} />
+              {allPKMN.results?.map((pkmn, index) => (
+                <PkmnCard key={index} pkmn={pkmn} />
               ))}
             </div>
 
-            <ShowMore
+            {/* <ShowMore
               pageNumber={(searchParams.limit || 10) / 10}
               isNext={(searchParams.limit || 10) > allPKMN.length}
-            />
+            /> */}
+          </section>
+        ) : !isSearchFilled ? (
+          <section>
+            <div className="home__cars-wrapper">
+              <PkmnCard pkmn={allPKMN.name! as IPokeProps} />
+            </div>
           </section>
         ) : (
           <div className="home__error-container">
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>
-            <p>{allPKMN?.message}</p>
+            {/* <p>{allPKMN?.message}</p> */}
           </div>
         )}
       </div>
