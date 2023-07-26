@@ -3,6 +3,7 @@
 // 2. fix pkmncards id and image
 "use client";
 
+// import { NextPage } from 'next';
 import { useEffect, useState } from "react";
 import Image from "next/image";
 // import {  } from "@constants";
@@ -11,6 +12,10 @@ import { HomeProps, PokeState } from "~~/types";
 import { IPokeProps } from "~~/types";
 import { fetchPKMN } from "~~/utils";
 import { fetchPKMNCards } from "~~/utils";
+
+// TODO:
+// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
+// 2. fix pkmncards id and image
 
 // TODO:
 // 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name

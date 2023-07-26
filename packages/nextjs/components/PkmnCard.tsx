@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 // import { calculateCarRent } from "@utils";
 // import CustomButton from "./CustomButton";
 // import CarDetails from "./CarDetails";
 import { CustomButton, PkmnDetails } from "~~/components";
+import { pokemons } from "~~/constants";
 import { IPokeProps } from "~~/types";
 
 interface PkmnCardProps {
@@ -14,8 +15,12 @@ interface PkmnCardProps {
 
 const PkmnCard = ({ pkmn }: PkmnCardProps) => {
   // const { id, name, types, results } = pkmn;
-  const { id, name, types } = pkmn;
+  const { name, types } = pkmn;
   const [isOpen, setIsOpen] = useState(false);
+  // get id with index
+  const id = 2 + pokemons.indexOf(pkmn.name!);
+
+  useEffect(() => {}, [name]);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -44,7 +49,7 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
             {/* <p className="text-[14px] leading-[17px]">#{id}</p> */}
           </div>
           <div className="flex flex-col justify-right items-center gap-2">
-            <p className="car-card__icon-text">{name}</p>
+            <p className="car-card__icon-text">{pkmn.name}</p>
           </div>
           <div className="flex flex-col justify-right items-center gap-2">
             {/* <p className="car-card__icon-text">{types![1].type?.name}</p> */}
