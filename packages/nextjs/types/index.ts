@@ -10,6 +10,7 @@ export interface IPokeProps {
   next?: string;
   previous?: string;
   results?: Options[];
+  url?: string;
   name?: string;
   id?: string;
   types?: Types[];

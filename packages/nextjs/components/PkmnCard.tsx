@@ -8,6 +8,7 @@ import Image from "next/image";
 import { CustomButton, PkmnDetails } from "~~/components";
 import { pokemons } from "~~/constants";
 import { IPokeProps } from "~~/types";
+import { generatePKMNImageUrl } from "~~/utils";
 
 interface PkmnCardProps {
   pkmn: IPokeProps;
@@ -15,12 +16,16 @@ interface PkmnCardProps {
 
 const PkmnCard = ({ pkmn }: PkmnCardProps) => {
   // const { id, name, types, results } = pkmn;
-  const { name, types } = pkmn;
+  const { name, url } = pkmn;
   const [isOpen, setIsOpen] = useState(false);
   // get id with index
-  const id = 2 + pokemons.indexOf(pkmn.name!);
-
-  useEffect(() => {}, [name]);
+  // const id = 2 + pokemons.indexOf(pkmn.name!);
+  const substringToRemove = "https://pokeapi.co/api/v2/pokemon/";
+  const newString = url?.replace(substringToRemove, "");
+  const substringToRemoveAgain = "/";
+  const id = newString?.replace(substringToRemoveAgain, "");
+  const imgUrl = generatePKMNImageUrl(pkmn.name!);
+  // useEffect(() => {}, [name]);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -35,7 +40,7 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-          alt="car model"
+          alt="pokemon"
           fill
           priority
           className="object-contain"
@@ -46,7 +51,7 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
       <div className="relative flex w-full mt-2">
         <div className="flex group-hover:invisible w-full justify-between text-grey">
           <div className="flex flex-col justify-right items-center gap-2">
-            {/* <p className="text-[14px] leading-[17px]">#{id}</p> */}
+            <p className="text-[14px] leading-[17px]">#{id}</p>
           </div>
           <div className="flex flex-col justify-right items-center gap-2">
             <p className="car-card__icon-text">{pkmn.name}</p>
