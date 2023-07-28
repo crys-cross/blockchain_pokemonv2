@@ -1,6 +1,3 @@
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
-// 2. fix pkmncards id and image
 "use client";
 
 // import { NextPage } from 'next';
@@ -11,38 +8,6 @@ import { CustomFilter, Hero, Pagination, PkmnCard, SearchBar, ShowMore } from "~
 import { HomeProps, PokeState } from "~~/types";
 import { IPokeProps } from "~~/types";
 import { fetchPKMN } from "~~/utils";
-
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
-// 2. fix pkmncards id and image
-
-// import { fetchPKMNCards } from "~~/utils";
-
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
-// 2. fix pkmncards id and image
-
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
-// 2. fix pkmncards id and image
-
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
-
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
-
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
-
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
-
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
-
-// TODO:
-// 1. if searchParams === "" return allPKMN.results.map(name => <PkmnCard pkmn={pkmn} />) else return allPKMN.name
 
 const Page = async ({ searchParams }: HomeProps) => {
   const allPKMN = await fetchPKMN({

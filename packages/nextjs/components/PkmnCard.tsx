@@ -15,17 +15,14 @@ interface PkmnCardProps {
 }
 
 const PkmnCard = ({ pkmn }: PkmnCardProps) => {
-  // const { id, name, types, results } = pkmn;
   const { name, url } = pkmn;
   const [isOpen, setIsOpen] = useState(false);
-  // get id with index
-  // const id = 2 + pokemons.indexOf(pkmn.name!);
+  // get id with url
+
   const substringToRemove = "https://pokeapi.co/api/v2/pokemon/";
   const newString = url?.replace(substringToRemove, "");
   const substringToRemoveAgain = "/";
   const id = newString?.replace(substringToRemoveAgain, "");
-  const imgUrl = generatePKMNImageUrl(pkmn.name!);
-  // useEffect(() => {}, [name]);
 
   const closeModal = () => {
     setIsOpen(false);

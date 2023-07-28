@@ -24,7 +24,7 @@ interface PkmnDetailsProps {
 const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
   return (
     <>
-      {/* <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
@@ -50,29 +50,15 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="car-details__dialog-panel">
-                  <button
-                    type="button"
-                    className="car-details__close-btn"
-                    onClick={closeModal}
-                  >
-                    <Image
-                      src="/close.svg"
-                      alt="close"
-                      width={20}
-                      height={20}
-                      className="object-contain"
-                    />
+                  <button type="button" className="car-details__close-btn" onClick={closeModal}>
+                    <Image src="/close.svg" alt="close" width={20} height={20} className="object-contain" />
                   </button>
 
                   <div className="flex-1 flex flex-row gap-3">
                     <div className="car-details__main-image">
                       <Image
-                        src={`https://cdn.imagin.studio/getimage?customer=${imaginApiKey}&make=${
-                          car.make
-                        }&modelFamily=${
-                          car.model.split(" ")[0]
-                        }&zoomType=fullscreen&modelYear=${car.year}`}
-                        alt="car model"
+                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+                        alt="pokemon"
                         fill
                         priority
                         className="object-contain"
@@ -81,19 +67,13 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
 
                     <div className="car-details__main-image">
                       <Image
-                        src={`https://cdn.imagin.studio/getimage?customer=${imaginApiKey}&make=${
-                          car.make
-                        }&modelFamily=${
-                          car.model.split(" ")[0]
-                        }&zoomType=fullscreen&modelYear=${car.year}`}
-                        alt="car model"
+                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+                        alt="pokemon"
                         fill
                         priority
                         className="object-contain"
                       />
                     </div>
-
-                    
                   </div>
 
                   <div className="flex-1 flex flex-col gap-2">
@@ -103,16 +83,9 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
 
                     <div className="mt-3 flex flex-wrap gap-4">
                       {Object.entries(car).map(([key, value]) => (
-                        <div
-                          className="flex justify-between gap-5 w-full text-right"
-                          key={key}
-                        >
-                          <h4 className="text-grey capitalize">
-                            {key.split("_").join(" ")}
-                          </h4>
-                          <p className="text-black-100 font-semibold">
-                            {value}
-                          </p>
+                        <div className="flex justify-between gap-5 w-full text-right" key={key}>
+                          <h4 className="text-grey capitalize">{key.split("_").join(" ")}</h4>
+                          <p className="text-black-100 font-semibold">{value}</p>
                         </div>
                       ))}
                     </div>
@@ -122,7 +95,7 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
             </div>
           </div>
         </Dialog>
-      </Transition> */}
+      </Transition>
     </>
   );
 };
