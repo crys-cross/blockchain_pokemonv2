@@ -1,5 +1,6 @@
-import React from "react";
+// import React from "react";
 import { Fragment } from "react";
+import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { IPokeProps } from "~~/types";
 
