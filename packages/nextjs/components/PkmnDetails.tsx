@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { IPokeProps } from "~~/types";
+import { fetchPKMN } from "~~/utils";
 
 // const PkmnDetailsImage = ({ pkmn, mode }: { pkmn: IPokeProps; mode: string }) => (
 //   <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
@@ -22,7 +23,13 @@ interface PkmnDetailsProps {
   pkmn: IPokeProps;
 }
 
-const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
+const PkmnDetails = async ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
+  const allPKMN = await fetchPKMN({
+    pkmnSearch: pkmn.toString() || "",
+  });
+
+  const { id, name } = allPKMN;
+
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -59,7 +66,7 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
                     <div className="car-details__main-image">
                       <Image
                         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-                        alt="pokemon"
+                        alt="pokemon-default"
                         fill
                         priority
                         className="object-contain"
@@ -68,8 +75,8 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
 
                     <div className="car-details__main-image">
                       <Image
-                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-                        alt="pokemon"
+                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${id}.png`}
+                        alt="pokemon-shiny"
                         fill
                         priority
                         className="object-contain"
@@ -78,17 +85,15 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
                   </div>
 
                   <div className="flex-1 flex flex-col gap-2">
-                    <h2 className="font-semibold text-xl capitalize">
-                      {car.make} {car.model}
-                    </h2>
+                    <h2 className="font-semibold text-xl capitalize">{name}</h2>
 
                     <div className="mt-3 flex flex-wrap gap-4">
-                      {Object.entries(car).map(([key, value]) => (
+                      {/* {Object.entries(car).map(([key, value]) => (
                         <div className="flex justify-between gap-5 w-full text-right" key={key}>
                           <h4 className="text-grey capitalize">{key.split("_").join(" ")}</h4>
                           <p className="text-black-100 font-semibold">{value}</p>
                         </div>
-                      ))}
+                      ))} */}
                     </div>
                   </div>
                 </Dialog.Panel>
@@ -104,6 +109,8 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
 export default PkmnDetails;
 
 // TODO
+
+// trigger search when pkmncard is pressed
 // image(normal and shiny)
 // Stats
 // Pokedex entry
