@@ -28,7 +28,7 @@ const PkmnDetails = async ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
     pkmnSearch: pkmn.toString() || "",
   });
 
-  const { id, name } = allPKMN;
+  const { id, name, stats, height, weight, types } = allPKMN;
 
   return (
     <>
@@ -94,6 +94,26 @@ const PkmnDetails = async ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
                           <p className="text-black-100 font-semibold">{value}</p>
                         </div>
                       ))} */}
+
+                      <div className="flex justify-between gap-5 w-full text-right">
+                        <h4 className="text-grey capitalize">{stats}</h4>
+                        <p className="text-black-100 font-semibold">{stats}</p>
+                      </div>
+
+                      <div className="flex justify-between gap-5 w-full text-right">
+                        <h4 className="text-grey capitalize">{height}</h4>
+                        <p className="text-black-100 font-semibold">{height}</p>
+                      </div>
+
+                      <div className="flex justify-between gap-5 w-full text-right">
+                        <h4 className="text-grey capitalize">{weight}</h4>
+                        <p className="text-black-100 font-semibold">{weight}</p>
+                      </div>
+
+                      <div className="flex justify-between gap-5 w-full text-right">
+                        <h4 className="text-grey capitalize">{types[0].type?.name}</h4>
+                        <p className="text-black-100 font-semibold">{types[0].type?.name}</p>
+                      </div>
                     </div>
                   </div>
                 </Dialog.Panel>
