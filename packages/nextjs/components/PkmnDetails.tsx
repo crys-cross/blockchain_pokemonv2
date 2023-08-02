@@ -96,8 +96,33 @@ const PkmnDetails = async ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
                       ))} */}
 
                       <div className="flex justify-between gap-5 w-full text-right">
-                        <h4 className="text-grey capitalize">{stats}</h4>
-                        <p className="text-black-100 font-semibold">{stats}</p>
+                        <h4 className="text-grey capitalize">STATS</h4>
+                        <div className="statbox">
+                          <div>
+                            <p>{stats && stats.length > 0 ? stats[0].base_stat : "0"}</p>
+                            <p>{stats && stats.length > 0 ? stats[0].stat?.name : "hp"}</p>
+                          </div>
+                          <div>
+                            <p>{stats && stats.length > 0 ? stats[1].base_stat : "0"}</p>
+                            <p>{stats && stats.length > 0 ? stats[1].stat?.name : "attack"}</p>
+                          </div>
+                          <div>
+                            <p>{stats && stats.length > 0 ? stats[2].base_stat : "0"}</p>
+                            <p>{stats && stats.length > 0 ? stats[2].stat?.name : "defense"}</p>
+                          </div>
+                          <div>
+                            <p>{stats && stats.length > 0 ? stats[3].base_stat : "0"}</p>
+                            <p>{stats && stats.length > 0 ? stats[3].stat?.name : "special-attack"}</p>
+                          </div>
+                          <div>
+                            <p>{stats && stats.length > 0 ? stats[4].base_stat : "0"}</p>
+                            <p>{stats && stats.length > 0 ? stats[4].stat?.name : "special-defense"}</p>
+                          </div>
+                          <div>
+                            <p>{stats && stats.length > 0 ? stats[5].base_stat : "0"}</p>
+                            <p>{stats && stats.length > 0 ? stats[5].stat?.name : "speed"}</p>
+                          </div>
+                        </div>
                       </div>
 
                       <div className="flex justify-between gap-5 w-full text-right">
@@ -111,8 +136,12 @@ const PkmnDetails = async ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
                       </div>
 
                       <div className="flex justify-between gap-5 w-full text-right">
-                        <h4 className="text-grey capitalize">{types[0].type?.name}</h4>
-                        <p className="text-black-100 font-semibold">{types[0].type?.name}</p>
+                        <h4 className="text-grey capitalize">
+                          {types && types.length > 0 ? types[0].type?.name : "N/A"}
+                        </h4>
+                        <p className="text-black-100 font-semibold">
+                          {types && types.length > 0 ? types[0].type?.name : "N/A"}
+                        </p>
                       </div>
                     </div>
                   </div>

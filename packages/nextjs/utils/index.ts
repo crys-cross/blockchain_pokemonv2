@@ -89,7 +89,7 @@ export interface FetchProps {
   types?: Types[];
   height?: number;
   weight?: number;
-  stats?: string[];
+  stats?: Stats[];
 }
 
 export interface Options {
@@ -100,4 +100,15 @@ export interface Options {
 export interface Types {
   slot?: string;
   type?: Options;
+}
+
+export interface Stats {
+  base_stat?: number;
+  effort?: number;
+  stat?: StatsStat;
+}
+
+export interface StatsStat {
+  name?: number;
+  url?: number;
 }
