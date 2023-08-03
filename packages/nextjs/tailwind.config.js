@@ -9,19 +9,19 @@ module.exports = {
     themes: [
       {
         scaffoldEth: {
-          primary: "#93BBFB",
-          "primary-content": "#212638",
-          secondary: "#DAE8FF",
-          "secondary-content": "#212638",
-          accent: "#93BBFB",
-          "accent-content": "#212638",
-          neutral: "#212638",
-          "neutral-content": "#ffffff",
-          "base-100": "#ffffff",
-          "base-200": "#f4f8ff",
-          "base-300": "#DAE8FF",
-          "base-content": "#212638",
-          info: "#93BBFB",
+          primary: "#93BBFB", //lightblue
+          "primary-content": "#212638", //bluegray
+          secondary: "#DAE8FF", //whiteblue
+          "secondary-content": "#212638", //bluegray
+          accent: "#93BBFB", //lightblue
+          "accent-content": "#212638", //bluegray
+          neutral: "#212638", //bluegray
+          "neutral-content": "#ffffff", //white
+          "base-100": "#ffffff", //white
+          "base-200": "#f4f8ff", //white?
+          "base-300": "#DAE8FF", //whiteblue
+          "base-content": "#212638", //bluegray
+          info: "#93BBFB", //lightblue
           success: "#34EEB6",
           warning: "#FFCF72",
           error: "#FF8863",
@@ -35,19 +35,19 @@ module.exports = {
       },
       {
         scaffoldEthDark: {
-          primary: "#212638",
-          "primary-content": "#F9FBFF",
-          secondary: "#2A3655",
-          "secondary-content": "#F9FBFF",
-          accent: "#4969A6",
-          "accent-content": "#F9FBFF",
-          neutral: "#F9FBFF",
-          "neutral-content": "#385183",
-          "base-100": "#385183",
-          "base-200": "#2A3655",
-          "base-300": "#212638",
-          "base-content": "#F9FBFF",
-          info: "#385183",
+          primary: "#212638", //bluegray
+          "primary-content": "#F9FBFF", //white?
+          secondary: "#2A3655", //bluebluegray
+          "secondary-content": "#F9FBFF", //white?
+          accent: "#4969A6", //bluebluebluegray
+          "accent-content": "#F9FBFF", //white?
+          neutral: "#F9FBFF", //white?
+          "neutral-content": "#385183", //bluebluegray??
+          "base-100": "#385183", //bluebluegray??
+          "base-200": "#2A3655", //bluebluegray
+          "base-300": "#212638", //bluegray
+          "base-content": "#F9FBFF", //white?
+          info: "#385183", //bluebluegray??
           success: "#34EEB6",
           warning: "#FFCF72",
           error: "#FF8863",
@@ -62,18 +62,18 @@ module.exports = {
       },
       {
         exampleUi: {
-          primary: "#000000",
-          "primary-content": "#ffffff",
-          secondary: "#FF6644",
-          "secondary-content": "#212638",
-          accent: "#93BBFB",
-          "accent-content": "#212638",
-          neutral: "#f3f3f3",
-          "neutral-content": "#212638",
-          "base-100": "#ffffff",
-          "base-200": "#f1f1f1",
-          "base-300": "#d0d0d0",
-          "base-content": "#212638",
+          primary: "#000000", //black
+          "primary-content": "#ffffff", //white
+          secondary: "#FF6644", //red
+          "secondary-content": "#212638", //gray
+          accent: "#93BBFB", //lightblue
+          "accent-content": "#212638", //gray
+          neutral: "#f3f3f3", //white?
+          "neutral-content": "#212638", //gray
+          "base-100": "#ffffff", //white
+          "base-200": "#f1f1f1", //white?
+          "base-300": "#d0d0d0", //graywhite
+          "base-content": "#212638", //gray
           info: "#93BBFB",
           success: "#34EEB6",
           warning: "#FFCF72",
