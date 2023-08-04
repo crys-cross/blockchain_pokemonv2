@@ -22,9 +22,9 @@ module.exports = {
           "base-300": "#DAE8FF", //whiteblue
           "base-content": "#212638", //bluegray
           info: "#93BBFB", //lightblue
-          success: "#34EEB6",
-          warning: "#FFCF72",
-          error: "#FF8863",
+          success: "#34EEB6", //mintgreen
+          warning: "#FFCF72", //yellow
+          error: "#FF8863", //red
 
           "--rounded-btn": "9999rem",
 
@@ -48,9 +48,9 @@ module.exports = {
           "base-300": "#212638", //bluegray
           "base-content": "#F9FBFF", //white?
           info: "#385183", //bluebluegray??
-          success: "#34EEB6",
-          warning: "#FFCF72",
-          error: "#FF8863",
+          success: "#34EEB6", //mintgreen
+          warning: "#FFCF72", //yellow
+          error: "#FF8863", //red
 
           "--rounded-btn": "9999rem",
 
