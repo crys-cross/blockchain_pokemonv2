@@ -41,7 +41,7 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
           fill
           priority
           className="object-contain"
-          onClick={() => setIsOpen(true)}
+          onClick={openModal}
         />
       </div>
 
@@ -69,7 +69,7 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
         </div> */}
       </div>
 
-      <PkmnDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} pkmn={pkmn} />
+      <PkmnDetails isOpen={isOpen} closeModal={closeModal} pkmn={pkmn} />
     </div>
   );
 };

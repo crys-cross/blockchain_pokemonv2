@@ -1,8 +1,9 @@
 // import React from "react";
+import { useEffect, useState } from "react";
 import { Fragment } from "react";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import { IPokeProps } from "~~/types";
+import { IPokeProps, PokeState } from "~~/types";
 import { fetchPKMN } from "~~/utils";
 
 // const PkmnDetailsImage = ({ pkmn, mode }: { pkmn: IPokeProps; mode: string }) => (
@@ -23,10 +24,19 @@ interface PkmnDetailsProps {
   pkmn: IPokeProps;
 }
 
-const PkmnDetails = async ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
-  const allPKMN = await fetchPKMN({
-    pkmnSearch: pkmn.toString() || "",
-  });
+const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
+  const [allPKMN, setAllPKMN] = useState<IPokeProps>({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchPKMN({
+        pkmnSearch: pkmn.toString() || "",
+      });
+      setAllPKMN(data as IPokeProps);
+    };
+
+    fetchData();
+  }, [pkmn]);
 
   const { id, name, stats, height, weight, types } = allPKMN;
 

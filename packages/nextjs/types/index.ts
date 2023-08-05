@@ -6,17 +6,17 @@ export interface IPokemontypes {
 }
 
 export interface IPokeProps {
+  url?: string;
   count?: number;
   next?: string;
   previous?: string;
   results?: Options[];
-  url?: string;
   name?: string;
   id?: string;
   types?: Types[];
   height?: number;
   weight?: number;
-  stats?: string[];
+  stats?: Stats[];
 }
 
 export interface Options {
@@ -27,6 +27,17 @@ export interface Options {
 export interface Types {
   slot?: string;
   type?: Options;
+}
+
+export interface Stats {
+  base_stat?: number;
+  effort?: number;
+  stat?: StatsStat;
+}
+
+export interface StatsStat {
+  name?: number;
+  url?: number;
 }
 // export interface IPokeProps {
 //   city_mpg: number;
@@ -48,7 +59,9 @@ export interface results {
   url: string;
 }
 
-export type PokeState = IPokeProps[] & { message?: string };
+// export type PokeState = IPokeProps[] & { message?: string };
+
+export type PokeState = { pkmn: IPokeProps };
 
 export interface SearchBarProps {
   setPokemonSearch: (search: string) => void;

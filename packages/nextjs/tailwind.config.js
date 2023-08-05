@@ -91,27 +91,45 @@ module.exports = {
   theme: {
     // Extend Tailwind classes (e.g. font-bai-jamjuree, animate-grow)
     extend: {
-      fontFamily: {
-        "bai-jamjuree": ["Bai Jamjuree", "sans-serif"],
+      colors: {
+        "black-100": "#2B2C35",
+        "primary-blue": {
+          DEFAULT: "#2B59FF",
+          100: "#F5F8FF",
+        },
+        "secondary-orange": "#f79761",
+        "light-white": {
+          DEFAULT: "rgba(59,60,152,0.03)",
+          100: "rgba(59,60,152,0.02)",
+        },
+        grey: "#747A88",
       },
-      keyframes: {
-        grow: {
-          "0%": {
-            width: "0%",
+      backgroundImage: {
+        pattern: "url('/pattern.png')",
+        "hero-bg": "url('/hero-bg.png')",
+        fontFamily: {
+          "bai-jamjuree": ["Bai Jamjuree", "sans-serif"],
+          inter: ["Inter", "sans-serif"],
+        },
+        keyframes: {
+          grow: {
+            "0%": {
+              width: "0%",
+            },
+            "100%": {
+              width: "100%",
+            },
           },
-          "100%": {
-            width: "100%",
+          zoom: {
+            "0%, 100%": { transform: "scale(1, 1)" },
+            "50%": { transform: "scale(1.1, 1.1)" },
           },
         },
-        zoom: {
-          "0%, 100%": { transform: "scale(1, 1)" },
-          "50%": { transform: "scale(1.1, 1.1)" },
+        animation: {
+          grow: "grow 5s linear infinite",
+          "pulse-fast": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+          zoom: "zoom 1s ease infinite",
         },
-      },
-      animation: {
-        grow: "grow 5s linear infinite",
-        "pulse-fast": "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        zoom: "zoom 1s ease infinite",
       },
     },
   },
