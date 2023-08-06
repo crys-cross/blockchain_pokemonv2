@@ -69,7 +69,7 @@ const PkmnCard = ({ pkmn }: PkmnCardProps) => {
         </div> */}
       </div>
 
-      <PkmnDetails isOpen={isOpen} closeModal={closeModal} pkmn={pkmn} />
+      <PkmnDetails isOpen={isOpen} closeModal={closeModal} pkmn={pkmn.name!} />
     </div>
   );
 };

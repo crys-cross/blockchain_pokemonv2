@@ -21,7 +21,7 @@ import { fetchPKMN } from "~~/utils";
 interface PkmnDetailsProps {
   isOpen: boolean;
   closeModal: () => void;
-  pkmn: IPokeProps;
+  pkmn: string;
 }
 
 const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
