@@ -153,6 +153,13 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
                           {types && types.length > 0 ? types[0].type?.name : "N/A"}
                         </p>
                       </div>
+
+                      <div className="flex justify-between gap-5 w-full text-right">
+                        <h4 className="text-grey capitalize">{types && types.length > 0 ? types[1].type?.name : ""}</h4>
+                        <p className="text-black-100 font-semibold">
+                          {types && types.length > 0 ? types[1].type?.name : ""}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </Dialog.Panel>
