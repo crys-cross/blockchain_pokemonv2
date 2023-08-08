@@ -107,7 +107,7 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
 
                       <div className="flex justify-between gap-5 w-full text-right">
                         <h4 className="text-grey capitalize">STATS</h4>
-                        <div className="statbox">
+                        <div className="flex flex-row">
                           <div>
                             <p>{stats && stats.length > 0 ? stats[0].base_stat : "0"}</p>
                             <p>{stats && stats.length > 0 ? stats[0].stat?.name : "hp"}</p>
@@ -155,9 +155,9 @@ const PkmnDetails = ({ isOpen, closeModal, pkmn }: PkmnDetailsProps) => {
                       </div>
 
                       <div className="flex justify-between gap-5 w-full text-right">
-                        <h4 className="text-grey capitalize">{types && types.length > 0 ? types[1].type?.name : ""}</h4>
+                        <h4 className="text-grey capitalize">{types && types.length > 1 ? types[1].type?.name : ""}</h4>
                         <p className="text-black-100 font-semibold">
-                          {types && types.length > 0 ? types[1].type?.name : ""}
+                          {types && types.length > 1 ? types[1].type?.name : ""}
                         </p>
                       </div>
                     </div>

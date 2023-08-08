@@ -35,17 +35,17 @@ module.exports = {
       },
       {
         scaffoldEthDark: {
-          primary: "#212638", //bluegray
+          primary: "#ff0000", //bluegray(body minor)
           "primary-content": "#F9FBFF", //white?
-          secondary: "#2A3655", //bluebluegray
+          secondary: "#ff0000", //bluebluegray(body and wallet)
           "secondary-content": "#F9FBFF", //white?
-          accent: "#4969A6", //bluebluebluegray
+          accent: "#D5A100", //bluebluebluegray
           "accent-content": "#F9FBFF", //white?
           neutral: "#F9FBFF", //white?
           "neutral-content": "#385183", //bluebluegray??
-          "base-100": "#385183", //bluebluegray??
-          "base-200": "#2A3655", //bluebluegray
-          "base-300": "#212638", //bluegray
+          "base-100": "#D5A100", //bluebluegray??(nav and plates)
+          "base-200": "#ff0000", //bluebluegray(body and wallet)
+          "base-300": "#ff0000", //bluegray(body minor)
           "base-content": "#F9FBFF", //white?
           info: "#385183", //bluebluegray??
           success: "#34EEB6", //mintgreen
